@@ -114,7 +114,15 @@ public class BST {
     }
 
     public int count(int item) {
-        return -1;
+        if (this.isEmpty()) {
+            return 0;
+        } else if (item > this.root) {
+            return this.right.count(item);
+        } else if (item == this.root) {
+            return this.left.count(item) + this.right.count(item) + 1;
+        } else {
+            return this.left.count(item);
+        }
     }
 
     public int getSize() {
