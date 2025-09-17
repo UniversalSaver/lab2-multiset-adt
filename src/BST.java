@@ -91,19 +91,46 @@ public class BST {
 
 
     private int extractMax() {
-        return -1;
+        if (this.right.isEmpty()) {
+            int maxItem = this.root;
+            // "Promote" the left subtree.
+            // Alternate approach: call self.delete_root()!
+            this.root = this.left.root;
+            this.left = this.left.left;
+            this.right = this.left.right;
+            return maxItem;
+        }
+        else {
+            return this.right.extractMax();
+        }
     }
 
     public int height() {
-        return -1;
+        if (this.isEmpty()) {
+            return 0;
+        } else {
+            return Math.max(this.left.height(), this.right.height()) + 1;
+        }
     }
 
     public int count(int item) {
-        return -1;
+        if (this.isEmpty()) {
+            return 0;
+        } else if (item > this.root) {
+            return this.right.count(item);
+        } else if (item == this.root) {
+            return this.left.count(item) + this.right.count(item) + 1;
+        } else {
+            return this.left.count(item);
+        }
     }
 
     public int getSize() {
-        return -1;
+        if (this.isEmpty()) {
+            return 0;
+        } else {
+            return this.left.getSize() +  this.right.getSize() + 1;
+        }
     }
 
     public static void main(String[] args) {
