@@ -65,7 +65,7 @@ public class BST {
         } else if (this.root == item) {
             this.deleteRoot();
         } else if (item < this.root) {
-        this.left.delete(item);
+            this.left.delete(item);
         } else {
             this.right.delete(item);
         }
