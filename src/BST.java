@@ -91,7 +91,18 @@ public class BST {
 
 
     private int extractMax() {
-        return -1;
+        if (this.right.isEmpty()) {
+            int maxItem = this.root;
+            // "Promote" the left subtree.
+            // Alternate approach: call self.delete_root()!
+            this.root = this.left.root;
+            this.left = this.left.left;
+            this.right = this.left.right;
+            return maxItem;
+        }
+        else {
+            return this.right.extractMax();
+        }
     }
 
     public int height() {
