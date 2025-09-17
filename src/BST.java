@@ -126,7 +126,11 @@ public class BST {
     }
 
     public int getSize() {
-        return -1;
+        if (this.isEmpty()) {
+            return 0;
+        } else {
+            return this.left.getSize() +  this.right.getSize() + 1;
+        }
     }
 
     public static void main(String[] args) {
