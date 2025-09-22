@@ -37,7 +37,7 @@ public class BST {
         if (this.isEmpty()) {
             return false;
         } else if (item == this.root) {
-            return true;
+            return false;
         } else if (item < this.root) {
             return this.left.contains(item);
         }
